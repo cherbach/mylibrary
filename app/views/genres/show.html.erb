@@ -4,23 +4,14 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Genre #<%= @genre.id %></h3>
+        <h3 class="panel-title"><%= @genre.name %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
               <dt>Genre</dt>
-              <dd><%= @genre.genre_id %></dd>
-
-              <dt>User</dt>
-              <dd><%= @genre.user_id %></dd>
-
-              <dt>Book</dt>
-              <dd><%= @genre.book_id %></dd>
-
-              <dt>Author</dt>
-              <dd><%= @genre.author_id %></dd>
+              <dd><%= @genre.name %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">

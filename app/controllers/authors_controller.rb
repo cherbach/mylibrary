@@ -13,8 +13,8 @@ class AuthorsController < ApplicationController
 
   def create
     @author = Author.new
-    @author.user_id = params[:user_id]
-    @author.book_id = params[:book_id]
+    @author.name = params[:name]
+    @author.bio = params[:bio]
 
     if @author.save
       redirect_to "/authors", :notice => "Author created successfully."
@@ -25,13 +25,13 @@ class AuthorsController < ApplicationController
 
   def edit
     @author = Author.find(params[:id])
+
   end
 
   def update
     @author = Author.find(params[:id])
-
-    @author.user_id = params[:user_id]
-    @author.book_id = params[:book_id]
+    @author.name = params[:name]
+    @author.bio = params[:bio]
 
     if @author.save
       redirect_to "/authors", :notice => "Author updated successfully."

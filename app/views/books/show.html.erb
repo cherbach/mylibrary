@@ -4,26 +4,24 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Book #<%= @book.id %></h3>
+        <h3 class="panel-title"><%= @book.title %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>User</dt>
-              <dd><%= @book.user_id %></dd>
-
-              <dt>Review</dt>
-              <dd><%= @book.review %></dd>
 
               <dt>Title</dt>
               <dd><%= @book.title %></dd>
 
               <dt>Author</dt>
-              <dd><%= @book.author_id %></dd>
+              <dd><%= @book.author.name %></dd>
 
               <dt>Genre</dt>
-              <dd><%= @book.genre_id %></dd>
+              <dd><%= @book.genre.name %></dd>
+
+              <dt>Review</dt>
+              <dd><%= @book.review %></dd>
 
             </dl>
             <div class="btn-group btn-group-justified">

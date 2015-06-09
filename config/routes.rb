@@ -52,6 +52,12 @@ Rails.application.routes.draw do
   get "/delete_book/:id", :controller => "books", :action => "destroy"
   #------------------------------
 
+ # Routes for the About page:
+  
+  # READ
+  get "/about", :controller => "about", :action => "show"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

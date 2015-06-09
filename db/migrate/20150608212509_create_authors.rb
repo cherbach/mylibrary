@@ -1,8 +1,10 @@
 class CreateAuthors < ActiveRecord::Migration
   def change
     create_table :authors do |t|
-      t.integer :user_id
       t.integer :book_id
+      t.integer :genre_id
+      t.integer :user_id
+      
 
       t.timestamps
 

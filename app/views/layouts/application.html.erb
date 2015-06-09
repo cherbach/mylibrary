@@ -40,24 +40,27 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li><a href="/genres">Genres</a></li>
-          <li><a href="/authors">Authors</a></li>
-          <li><a href="/books">Books</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-          <% if 1 > 2 %>
-            <li><a href="/users/edit">Oscar the Grouch</a></li>
-            <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
-          <% else %>
+          <li><a href="/books">Books</a></li>
+          <li><a href="/authors">Authors</a></li>
+          <li><a href="/genres">Genres</a></li>
+          <li><a href="/about">About</a></li>
+
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user ==nil %>
             <li><a href="/users/sign_up">Sign up</a></li>
             <li><a href="/users/sign_in">Sign in</a></li>
-          <% end %>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div>
-  </nav>
+            <% else %>
+            <li> <a href="/users/edit"><%= current_user.email %></a> </li>
+            <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
+            <% end %>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
 
   <div class="container">
     <% if notice.present? %>

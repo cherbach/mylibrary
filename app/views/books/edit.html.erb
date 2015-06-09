@@ -1,12 +1,12 @@
 <!-- Validation failure messages -->
 
 <% if @book.errors.any? %>
-  <% @book.errors.full_messages.each do |message| %>
-    <div class="alert alert-dismissable alert-danger">
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-      <%= message %>
-    </div>
-  <% end %>
+<% @book.errors.full_messages.each do |message| %>
+<div class="alert alert-dismissable alert-danger">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <%= message %>
+</div>
+<% end %>
 <% end %>
 
 <!-- Responsive panel example -->
@@ -15,20 +15,49 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Edit Book #<%= @book.id %></h3>
+        <h3 class="panel-title"> Edit: <%= @book.title %></h3>
       </div>
       <div class="panel-body">
         <form action="/update_book/<%= @book.id %>" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for user_id -->
+          
+          <!-- Label and input for title -->
           <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User
+            <label for="title" class="col-sm-2 control-label">
+              Title
             </label>
             <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @book.user_id %>">
+              <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @book.title %>">
+            </div>
+          </div>
+          
+          <!-- Label and input for author_id -->
+          <div class="form-group">
+            <label for="author_id" class="col-sm-2 control-label">
+              Author
+            </label>
+            <div class="col-sm-10">
+
+              <%=select_tag(:author_id, options_from_collection_for_select(Author.all, :id, :name, @book.author_id), :class => "form-control") %>
+               <p class="help-block">
++                <a href="/author/new">or create a new one</a>
+
+            </div>
+          </div>
+
+          <!-- Label and input for genre_id -->
+          <div class="form-group">
+            <label for="genre_id" class="col-sm-2 control-label">
+              Genre
+            </label>
+            <div class="col-sm-10">
+            
+              <%=select_tag(:genre_id, options_from_collection_for_select(Genre.all, :id, :name, @book.genre_id), :class => "form-control") %>
+              <p class="help-block">
++                <a href="/genre/new">or create a new one</a>
+
             </div>
           </div>
 
@@ -39,36 +68,6 @@
             </label>
             <div class="col-sm-10">
               <textarea id="review" name="review" placeholder="Review" class="form-control" rows="3"><%= @book.review %></textarea>
-            </div>
-          </div>
-
-          <!-- Label and input for title -->
-          <div class="form-group">
-            <label for="title" class="col-sm-2 control-label">
-              Title
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="title" name="title" placeholder="Title" class="form-control" value="<%= @book.title %>">
-            </div>
-          </div>
-
-          <!-- Label and input for author_id -->
-          <div class="form-group">
-            <label for="author_id" class="col-sm-2 control-label">
-              Author
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="author_id" name="author_id" placeholder="Author" class="form-control" value="<%= @book.author_id %>">
-            </div>
-          </div>
-
-          <!-- Label and input for genre_id -->
-          <div class="form-group">
-            <label for="genre_id" class="col-sm-2 control-label">
-              Genre
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="genre_id" name="genre_id" placeholder="Genre" class="form-control" value="<%= @book.genre_id %>">
             </div>
           </div>
 
